@@ -1,0 +1,112 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+    <p>
+        <h4>Your current score is {{ total_payoff }} out of {{ round_count }} tasks completed.
+    </p>
+
+
+
+
+    <table class="table">
+            <tr>
+                <h4>Please sum the following numbers into the field below.</h4>
+                <h2>
+            </tr>
+            <tr>
+                <th style="vertical-align:text-top; text-align: right; font-size: 250%">{{reference_ints.0}} + {{reference_ints.1}}</th>
+                <th style="vertical-align:text-top; text-align: center; font-size: 250%"> = </th>
+                <th style="vertical-align:bottom"> {% formfield player.user_total with label="" %}  </th>
+                <th style="vertical-align:bottom; text-align: left"> {% next_button %}  </th>
+                <th style="vertical-align:middle; text-align: left">You have <div style="display: inline" id="countdown"></div> seconds left. </th>
+            </tr>
+        </table>
+
+
+    
+    </h4>
+
+
+    {% if debug %}
+
+
+
+
+        <div class="box" style="background-color: #e4ffdd">
+
+            <h4><br>Cheater Mode Activated (Debug Mode Only)  - <a href="#" id="prefill">Click Here to Autofill Summation</a></h4>
+            <p>You are playing in debug mode, so you can skip the manual
+                summation by clicking <a href="#" id="prefill">this link</a>
+                and clicking "next".
+            </p>
+            <p>
+
+                <br><br> First Task's Start Time: {{ init_time }}. 
+                <br> Current time: {{  current_time  }}.
+                <br> End time {{ end_time }}. 
+                <br> You've spent: {{ time_expended }} seconds of max  {{ time_limit }} seconds on these tasks. 
+                <br>
+                <br> That leaves you {{ tiemdf }} seconds. 
+                <br><br>
+            </p>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('a#prefill').click(function () {
+                    $('#id_user_total').val('{{ solution }}');
+                })
+            });
+        </script>
+
+
+
+
+    {% endif %}
+
+
+
+<!-- Countdown timer -->
+<script>
+function countdown( elementName, minutes, seconds )
+{
+    var element, endTime, hours, mins, msLeft, time;
+
+    function twoDigits( n )
+    {
+        return (n <= 9 ? "0" + n : n);
+    }
+
+    function updateTimer()
+    {
+        msLeft = endTime - (+new Date);
+        if ( msLeft < 1000 ) {
+            element.innerHTML = "0";
+        } else {
+            time = new Date( msLeft );
+            hours = time.getUTCHours();
+            mins = time.getUTCMinutes();
+            element.innerHTML = (hours ? hours + ':' + twoDigits( mins ) : mins) + ':' + twoDigits( time.getUTCSeconds() );
+            setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+        }
+    }
+
+    element = document.getElementById( elementName );
+    endTime = (+new Date) + 1000 * (60*minutes + seconds) + 500;
+    updateTimer();
+}
+
+countdown( "countdown", 0, {{tiemdf}} );
+countdown( "countdown2", 100, 0 );
+ </script>
+
+{% endblock %}

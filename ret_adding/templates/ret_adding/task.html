@@ -1,0 +1,73 @@
+{% extends "global/BaseMotherhood.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Task 
+{% endblock %}
+
+
+
+{% block content %}
+ 
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;border:none;margin:0px auto;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:5px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:5px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;}
+.tg .tg-s6z2{text-align:center;vertical-align:middle;}
+.tg .tg-s6z3{text-align:center;font-size:200%;vertical-align:middle;}
+.tg .tg-baqh{text-align:center;vertical-align:bottom;padding:5px 5px}
+.tg .tg-lqy6{text-align:left;vertical-align:bottom;padding:5px 5px}
+.tg .tg-lqy7{text-align:right;vertical-align:top;padding:50px;}
+.tg .tg-yw4l{vertical-align:top;padding:50px;}
+</style>
+<table class="tg" width="800">
+  <tr>
+    <th class="tg-s6z2" colspan="4"><h2>Please sum the following numbers into the field below <br>and then click <b>Next</b> or press the <b>Enter</b> key.<h3>
+        <br><br>
+    </th>
+  </tr>
+  <tr>
+    <td class="tg-s6z3" width="30%">{{player.int1}} + {{player.int2}}</td>
+    <td class="tg-s6z3" width="20%">=</td>
+    <td class="tg-baqh" width="25%">{% formfield player.user_total with label="" %}</td>
+    <td class="tg-lqy6" width="25%">{% next_button %}</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l" colspan="2" width="50%">
+        <h2>{% autoescape off %}  {{correct_last_round}}   {% endautoescape %}
+        <h2>Score: {{ total_payoff }}
+        <h2>Attempt {{ round_count }} 
+        </h2>
+    </td>
+  </tr>
+</table>
+<br><br>
+
+    {% if debug %}
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h4><br>Cheater Mode Activated (Debug Mode Only)  - <a href="#" id="prefill">Click Here to Autofill Summation</a></h4>
+                <p>You are playing in debug mode, so you can skip the manual
+                    summation by clicking <a href="#" id="prefill">this link</a>
+                    and clicking "next".
+                </p>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                $('a#prefill').click(function () {
+                    $('#id_user_total').val('{{ player.solution }}');
+                    document.getElementById('id_user_total').focus()
+                })
+            });
+        </script>
+
+
+
+
+    {% endif %}
+
+
+
+
+{% endblock %}

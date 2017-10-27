@@ -1,0 +1,4 @@
+s_o_a_a
+s_o_a_b
+s_o_a_c
+s_o_a_d

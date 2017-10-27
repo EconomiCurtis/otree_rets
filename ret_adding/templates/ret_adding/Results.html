@@ -1,0 +1,50 @@
+
+{% extends "global/BaseMotherhood.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Task Summary
+{% endblock %}
+
+{% block content %}
+
+    <p class="text-success">
+    </p>
+
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+            <h4>Your score on task 1: {{ total_payoff }}</h4>
+        </div>
+
+        <table class="table">           
+            <tr>
+                <th><center>Summation #</th>
+                <th><center>Intergers</th>
+                <th><center>Solution</th>
+                <th><center>Your Entry</th>
+                <th><center>Correct?</th>
+                <th><center>Score</th>
+            </tr>
+            {% for row in table_rows %}
+            <tr>
+                <td align="center">{{ row.round_number }}</td>
+                <td align="center">{{ row.int1 }} + {{ row.int2 }}</td>
+                <td align="center">{{ row.Ints_sum }}</td>
+                <td align="center">{{ row.player_sum }}</td>
+                <td align="center">{{ row.is_correct }}</td>
+                <td align="center">{{ row.payoff }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        <div class="panel-heading">
+            Note, if you see "<b>False</b>" and 0 points for a correct answer to your final summation task, that means the task was submitted after the timer had expired. 
+        </div>
+
+    </div>
+
+    {% next_button %}<br><br><br>
+
+{% endblock %}

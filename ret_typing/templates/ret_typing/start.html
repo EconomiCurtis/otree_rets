@@ -1,0 +1,54 @@
+
+{% extends "global/BaseMotherhood.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+
+{% load otree_tags staticfiles %}
+
+<div class="instructions well well-lg">
+
+    <h2 class="panel-sub-heading">
+        
+    </h2>
+
+    <link rel="stylesheet" type="text/css"
+          href="{% static 'global/matrix.css' %}"/>
+
+    <p>
+      In this part of the experiment you will be presented with a series of randomly selected letters and numbers. <br>You will have {{ player.task_timer}} seconds to type as many sequences as possible. Note that each character has to be correct.
+    </p>
+    <p>
+      Once you have entered your summation, click the <b>Next</b> button or press the <b>Enter</b> key.<br><br> 
+    </p>
+    <p>
+        You will get <b>1 point for each correct answer</b>. 
+          Your score will not decrease if you provide an incorrect answer.
+    </p>
+
+        <p><br></p>
+     <p>
+           After {{ player.task_timer}} seconds, the task will stop and you will receive a summary of the results.<br><br>
+    </p>
+    <p>
+           Please raise your hand and alert an experimenter if you have any questions.<br>
+    </p>
+    <p>
+           Otherwise, if you are ready, please click "Next" below to start the time and this {{ player.task_timer}} second task.<br>
+    </p>
+	
+
+
+</div>
+
+      {% next_button %}<br><br><br>
+
+
+
+
+
+{% endblock %}

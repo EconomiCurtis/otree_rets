@@ -1,0 +1,48 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Summary
+{% endblock %}
+
+{% block content %}
+
+    <p class="text-success">
+        The table below shows some statistics for the ... you have entered. 
+        In the real study this table might not be shown to subjects.
+    </p>
+
+    <div class="panel panel-success">
+
+        <div class="panel-heading">
+                Player Statistics 
+                <br>
+                Your Total Score: {{ total_payoff }}
+
+        </div>
+
+        <table class="table">           
+            <tr>
+                <th>Summation #</th>
+                <th>Intergers</th>
+                <th>Solution</th>
+                <th>Your Entry</th>
+                <th>Correct?</th>
+                <th>Score</th>
+            </tr>
+            {% for row in table_rows %}
+            <tr>
+                <td>{{ row.round_number }}</td>
+                <td>{{ row.int1 }} + {{ row.int2 }}</td>
+                <td>{{ row.Ints_sum }}</td>
+                <td>{{ row.player_sum }}</td>
+                <td>{{ row.is_correct }}</td>
+                <td>{{ row.payoff }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+{% endblock %}
