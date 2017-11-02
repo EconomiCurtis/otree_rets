@@ -1,4 +1,4 @@
-FROM python:3.4
+FROM python:3.5
 
 # Force stdio/out/err to be unbuffered - we want to see errors pronto.
 ENV PYTHONUNBUFFERED 1
