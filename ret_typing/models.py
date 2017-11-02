@@ -22,10 +22,10 @@ import random
 
 
 
-author = 'Curtis Kephart'
+author = 'Curtis Kephart (economicurtis@gmail.com)'
 
 doc = """
-Section: task 1, single player. 
+Real Effort Task. Type as many strings as possible.  
 """
 
 class Constants(BaseConstants):
