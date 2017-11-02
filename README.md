@@ -11,8 +11,6 @@ oTree project with a number of Real Effort Task (RET) example apps Edit
 ![oTree Typing Real Effort Task (RET)](/_static/misc/typing_ret.gif)
 
 
-[[Insert gif about here]]
-
 - The sequence of character strings is set in `models.py`. This sequence is currently fixed, i.e. not randomly generated on the fly. 
 - The length of the RET is set in `settings.py` (see config field `ret_timer`). If you want this to vary by period or subject or anything, see `models.py` >> `Subsession` for a good place to add additional logic. 
 - The timer is handled by `views.py` >> `get_timeout_seconds`
