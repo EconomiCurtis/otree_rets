@@ -284,7 +284,8 @@ class Player(BasePlayer):
     user_total = models.PositiveIntegerField(
         min = 1,
         max = 9999,
-        doc="user's summation")
+        doc="user's summation",
+        widget=widgets.TextInput(attrs={'autocomplete':'off'}))
 
     is_correct = models.BooleanField(
         doc="did the user get the task correct?")
