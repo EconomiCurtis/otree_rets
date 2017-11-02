@@ -8,6 +8,9 @@ oTree project with a number of Real Effort Task (RET) example apps Edit
 
 `ret_typing` is an oTree app that asks players to correctly type as many character strings as possible in a certain number of seconds. (set in `settings.py` >> `ret_timer`). 
 
+![oTree Typing Real Effort Task (RET)](/_static/misc/typing_ret.gif)
+
+
 [[Insert gif about here]]
 
 - The sequence of character strings is set in `models.py`. This sequence is currently fixed, i.e. not randomly generated on the fly. 
@@ -23,6 +26,5 @@ oTree project with a number of Real Effort Task (RET) example apps Edit
 
 `ret_adding` is an oTree app that asks players to correctly add as many integers (set in `models.py` >> `Constants`) of as possible in a certain number of seconds (set in `settings.py` >> `ret_timer`).
 
-[[Insert gif about here]]
-
+![oTree Adding Real Effort Task (RET)](/_static/misc/adding_ret.gif)
 
